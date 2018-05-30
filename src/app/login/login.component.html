@@ -1,0 +1,42 @@
+<div class="container">
+  <form (keydown)="keyDownFunction($event)">
+    <div class="row mb-3 logo">
+      <div class="col-md-6 offset-md-3 text-center">
+        <img class="img-logo" src="assets/images/logo.png">
+      </div>
+    </div>
+    <div class="row mb-2 div-user-input">
+      <div class="col-md-6 offset-md-3 text-center">
+        <div class="input-group input-group-lg border-bottom">
+          <span class="input-group-addon transparent-input" id="sizing-addon1"><i class="icon-email experd-color" aria-hidden="true"></i></span>
+          <input type="text" name="email" class="form-control transparent-input" placeholder="Your Email" id="email" required [(ngModel)]="model.email"
+            aria-describedby="sizing-addon1" #spy>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-6 offset-md-3 text-center">
+        <div class="input-group input-group-lg border-bottom">
+          <span class="input-group-addon transparent-input" id="sizing-addon1"><i class="icon-lock experd-color" aria-hidden="true"></i></span>
+          <input type="password" name="password" class="form-control transparent-input" placeholder="Your Password" is="password" required [(ngModel)]="model.password"
+            aria-describedby="sizing-addon1">
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="error">
+      <div class="col-md-6 offset-md-3 text-center">
+        <p class="experd-white">{{error}}</p>
+      </div>
+    </div>
+    <div class="row div-button mb-2">
+      <div class="col-md-6 offset-md-3 text-center">
+        <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="login()">Log in <i class="icon-arrow-right experd-grey" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <p>Forgot Password?</p>
+      </div>
+    </div>
+  </form>
+</div>

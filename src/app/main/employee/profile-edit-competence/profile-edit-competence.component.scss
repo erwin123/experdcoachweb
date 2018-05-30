@@ -1,0 +1,19 @@
+span.input-group {
+  a[dropdownToggle] {
+    color: #fff;
+    &:after {
+      content: none;
+    }
+  }
+}
+
+span.input-group {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fa-times {
+  position: absolute;
+  left: 0;
+  top: 15px;
+}

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-11">
+    <button type="button" class="btn btn-block button-experd button-center btn-lg float-right mb-1" [routerLink]="['/main/competence/add']">Add New Competence</button>
+    <table class="w-100 h-100">
+      <thead>
+        <tr>
+          <th *ngFor="let item of columns">{{item.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competence of competences | async">
+          <td class="experd-color">
+            <a [routerLink]="['/main/competence', competence.id]">{{competence.name}}</a>
+          </td>
+          <td class="experd-white">
+            {{competence.definition}}
+            <i class="fa fa-times experd-grey" (click)="delete(competence)" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

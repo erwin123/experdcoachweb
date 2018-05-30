@@ -1,0 +1,20 @@
+<table class="w-100 h-100">
+  <thead>
+    <tr>
+      <th *ngFor="let item of columns">{{item.title}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of companies | async; let i = index">
+      <td class="experd-color">
+        <a [routerLink]="['/main/company', company.id]">{{company.name}}</a>
+      </td>
+      <td class="white">
+        <span>{{company.employeesCount}}/{{company.accountLimit}}</span>
+      </td>
+      <td class="white">
+        <span>0/0</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

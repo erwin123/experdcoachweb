@@ -1,0 +1,30 @@
+<svg [attr.width]="svgParams.x_startposition + (target * svgParams.node_width + svgParams.outer_circle) + 70" [attr.height]="svgParams.outer_circle + svgParams.y_startposition + addY"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <g id="step">
+      <line attr.x1="{{svgParams.x_startposition}}" attr.y1="{{svgParams.y_startposition}}" attr.x2="{{svgParams.x_startposition + svgParams.node_width}}"
+        attr.y2="{{svgParams.y_startposition}}" attr.stroke-width="{{svgParams.outer_stroke}}" style="stroke:#555e6c; stroke-linecap:round"
+      />
+      <circle attr.cx="{{svgParams.x_startposition + svgParams.node_width}}" attr.cy="{{svgParams.y_startposition}}" attr.r="{{svgParams.outer_circle}}"
+        style="fill:#555e6c; stroke-width:0;" />
+      <line attr.x1="{{svgParams.x_startposition}}" attr.y1="{{svgParams.y_startposition}}" attr.x2="{{svgParams.x_startposition + svgParams.node_width}}"
+        attr.y2="{{svgParams.y_startposition}}" attr.stroke-width="{{svgParams.inner_stroke}}" style="stroke:inherit; stroke-linecap:round"
+      />
+      <circle attr.cx="{{svgParams.x_startposition + svgParams.node_width}}" attr.cy="{{svgParams.y_startposition}}" attr.r="{{svgParams.inner_circle}}"
+        style="fill:inherit; stroke-width:0;" />
+    </g>
+  </defs>
+  <use *ngFor="let i of nodesBefore" attr.transform="translate({{(target - i) * svgParams.node_width}} 0)" attr.class="{{(completedBefore ) > (target - i) ? beforeClass : 'not-complete'}}"
+    xlink:href="#step" />
+  <line *ngIf="showBefore" attr.x1="{{svgParams.x_startposition}}" attr.y1="{{svgParams.y_startposition}}" attr.x2="{{(svgParams.node_width * completedBefore) + svgParams.x_startposition}}"
+    attr.y2="{{svgParams.y_startposition}}" attr.stroke-width="{{svgParams.inner_stroke}}"
+    style="stroke-linecap:round" attr.class="{{beforeClass}}" />
+  <use *ngFor="let i of nodes" attr.transform="translate({{(target - i) * svgParams.node_width}} {{addY}})" attr.class="{{(completed ) > (target - i) ? completeClass : 'not-complete'}}"
+    xlink:href="#step" />
+  <line attr.x1="{{svgParams.x_startposition}}" attr.y1="{{svgParams.y_startposition + addY}}" attr.x2="{{(svgParams.node_width * completed) + svgParams.x_startposition}}"
+    attr.y2="{{svgParams.y_startposition + addY}}" attr.stroke-width="{{svgParams.inner_stroke}}"
+    style="stroke-linecap:round" attr.class="{{completeClass}}" />
+  <text attr.x="{{svgParams.x_startposition + (target * svgParams.node_width + svgParams.outer_circle) + (svgParams.outer_circle * 2)}}"
+    attr.y="{{(svgParams.outer_circle) + svgParams.y_startposition}}" font-family="Verdana" attr.font-size="{{(svgParams.outer_circle * 2) + 5}}"
+    style="fill: #FBAA33">0{{label}}</text>
+</svg>

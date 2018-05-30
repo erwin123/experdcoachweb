@@ -1,0 +1,29 @@
+<div class="experd-tab-container flex-me space-between flex-span mb-2">
+  <div>
+    <app-experd-back></app-experd-back>
+    <button type="button" class="btn btn-block button-experd button-center btn-lg float-right" [routerLink]="['/main/competence/edit', competence.id]">Edit</button>
+    <h2 class="experd-color">{{ competence.name }}</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <h4>Definition</h4>
+          <p class="experd-white">{{competence.definition}}</p>
+        </div>
+        <div class="col-6">
+          <h4>Key Behaviours</h4>
+          <p class="experd-white">{{competence.keybehaviour}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-4 py-1" *ngFor="let level of competence.competenceLevels">
+        <div class="experd-tab-container experd-overlay">
+          <h4 class="experd-color text-center">Level {{level.level}}</h4>
+          <p class="experd-white">{{level.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="experd-tab-container flex-row flex-span mb-2">
+  <form>
+    <div class="row">
+      <div class="col-12">
+        <app-experd-back></app-experd-back>
+        <h4 class="experd-color ml-1 mt-1">{{formTitle}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h4 class="float-left">Supervisor</h4>
+                <button type="button" class="btn btn-block button-experd experd-white button-center btn-lg float-right" (click)="addSupervisor()">+ add more supervisor</button>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngFor="let supervisor of employee?.supervisor">
+            <div class="col-md-5">
+              <span dropdown class="input-group input-group-lg border-bottom experd-white dropdown">
+                <div id="simple-dropdown" dropdownToggle>
+                  {{supervisor.name}}
+                  <i class="fa fa-caret-down experd-grey dropbtn float-right" aria-hidden="true"></i>
+                </div>
+                <ul class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+                  <li *ngFor="let employee of getEmployees()">
+                    <a class="dropdown-item" (click)="updateSupervisor(supervisor, employee)">{{employee.name}}</a>
+                  </li>
+                </ul>
+              </span>
+              <i class="fa fa-times experd-grey" (click)="deleteSupervisor(supervisor)" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h4 class="float-left">Team</h4>
+                <button type="button" class="btn btn-block button-experd experd-white button-center btn-lg float-right" (click)="addTeam()">+ add more team</button>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngFor="let team of employee?.team">
+            <div class="col-md-5">
+              <span dropdown class="input-group input-group-lg border-bottom experd-white dropdown">
+                <div id="simple-dropdown" dropdownToggle>
+                  {{team.name}}
+                  <i class="fa fa-caret-down experd-grey dropbtn float-right" aria-hidden="true"></i>
+                </div>                
+                <ul class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+                  <li *ngFor="let employee of getEmployees()">
+                    <a class="dropdown-item" (click)="updateTeam(team, employee)">{{employee.name}}</a>
+                  </li>
+                </ul>
+              </span>
+              <i class="fa fa-times experd-grey" (click)="deleteTeam(team)" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div class="row mt-3">
+      <div class="col-12 text-center mt-3">
+        <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="submit()">Submit <i class="fa fa-check experd-grey" aria-hidden="true"></i></button>
+      </div>
+    </div>-->
+  </form>
+</div>

@@ -1,0 +1,40 @@
+<div class="experd-tab-container flex-row flex-span mb-2 has-tabs">
+  <div class="col-5 border-right">
+    <div class="flex-me flex-span space-between">
+      <div class="row">
+        <div class="col-5">
+          <p class="experd-grey">Name</p>
+          <p class="experd-grey">Company</p>
+          <p class="experd-grey">Division</p>
+          <p class="experd-grey">Position</p>
+          <p class="experd-grey">Age</p>
+          <p class="experd-grey">Sex</p>
+          <p class="experd-grey">Profile</p>
+          <p class="experd-grey">Employement Period</p>
+        </div>
+        <div class="col-7">
+          <p class="experd-grey">: <span class="experd-white">{{employee.name | titleCase}}</span></p>
+          <p class="experd-grey">: <span class="experd-white">{{company.name | titleCase}}</span></p>
+          <p class="experd-grey">: <span class="experd-white">{{employee.division | titleCase}}</span></p>
+          <p class="experd-grey">: <span class="experd-white">{{employee.position | titleCase}}</span></p>
+          <p class="experd-grey">: <span class="experd-white">{{employee.dob | age}}</span></p>
+          <p class="experd-grey">: <span class="experd-white">{{employee.sex | titleCase}}</span></p>
+          <p class="experd-grey">: <span class="experd-white">{{profile | titleCase}}</span> <button type="button" class="btn btn-block button-experd btn-lg float-right" [ngClass]="{'active': employee.doProfileTest}" (click)="retest()">Re-test</button></p>
+          <p class="experd-grey">: <span class="experd-white">{{getEmployeePeriod(employee.joinDate)}}</span></p>
+        </div>
+      </div>
+      <div class="row">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="employee.doEvaluateCompetence" (ngModelChange)="updateEmployee()">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description experd-grey">Evaluate Competence</span>
+        </label>
+        <p class="experd-grey">Evaluate competence reminder</p>
+        <button type="button" class="btn btn-block button-experd btn-lg">Send Notification</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-7 flex-noheight">
+    <router-outlet></router-outlet>
+  </div>
+</div>

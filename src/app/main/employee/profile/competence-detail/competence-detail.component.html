@@ -1,0 +1,27 @@
+<div>
+  <app-experd-back></app-experd-back>
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <h1 class="experd-color">{{competence.name}}</h1>
+      <h3 class="experd-grey">Definition</h3>
+      <p class="experd-white">{{competence.definition}}</p>
+      <h3 class="experd-grey">Key Behaviours</h3>
+      <p class="experd-white">{{competence.keybehaviour}}</p>
+    </div>
+  </div>
+</div>
+<div class="row relative">
+  <div class="col-sm-6 offset-sm-3">
+    <div class="align-middle left-button" *ngIf="competencelevelId != 0">
+      <i class="fa fa-caret-left experd-grey" (click)="prevCompetence()" aria-hidden="true"></i>
+    </div>
+    <div class="experd-container">
+      <h4 class="experd-color">Level {{competencelevel.level}}</h4>
+      <p class="experd-white">{{competencelevel.description}}</p>
+      <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="updateCompetence()" [ngClass]="{'experd-grey': competencelevelId > empcompetencecurrent}">{{competencelevelId == empcompetencecurrent ? 'Approved' : competencelevelId < empcompetencecurrent ? 'Surpassed' : 'Approve'}} <i class="fa fa-check experd-grey" aria-hidden="true"></i></button>
+    </div>
+    <div class="align-middle right-button" *ngIf="competencelevelId != competence?.competenceLevels?.length - 1">
+      <i class="fa fa-caret-right experd-grey" (click)="nextCompetence()" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="experd-tab-container flex-row flex-span mb-2 overflowMe">
+  <form (keydown)="keyDownFunction($event)">
+    <div class="row">
+      <div class="col-12">
+        <app-experd-back></app-experd-back>
+        <h4 class="experd-color float-right">{{formTitle}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <div class="input-group input-group-lg border-bottom">
+          <input type="text" name="name" class="form-control transparent-input" placeholder="Name the new Competence Set" id="name"
+            required [(ngModel)]="competenceSet.name" aria-describedby="sizing-addon1" #spy>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 ddl">
+        <span dropdown class="border-bottom experd-white dropdown">
+          <div id="simple-dropdown" dropdownToggle>
+            {{this.selectedCompetency.name}}
+            <i class="fa fa-caret-down experd-grey" aria-hidden="true"></i>
+          </div>
+          <ul class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+            <li *ngFor="let competence of competencyAvailable; let i = index">
+              <a class="dropdown-item" (click)="updateSelectedCompetence(competence)">{{competence.name}}</a>
+            </li>
+          </ul>
+        </span>
+        <span dropdown class="border-bottom experd-white dropdown">
+          <div id="simple-dropdown" dropdownToggle>
+            {{this.dummyCompetencyLevel.level || 0}}
+            <i class="fa fa-caret-down experd-grey" aria-hidden="true"></i>
+          </div>
+          <ul class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+            <li *ngFor="let competencelevel of selectedCompetency.competenceLevels">
+              <a class="dropdown-item" (click)="updateCompetencyLevel(selectedCompetency, competencelevel)">{{competencelevel.level}}</a>
+            </li>
+          </ul>
+        </span>
+        <i class="fa fa-plus experd-grey" (click)="addCompetencyLevel()" aria-hidden="true"></i>
+        <span [@visibilityChanged]="added" class="badge badge-pill badge-success">Added!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="container">
+          <div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <h5>Competence
+                  <span class="float-right">Target Level</span>
+                </h5>
+              </div>
+            </div>
+            <div class="row" *ngFor="let competence of company.competences; let i = index">
+              <ng-template [ngIf]="i + 1 <= (company.competences.length / 2)">
+                <div class="col-md-10" *ngIf=getcompetenceSetLevel(competence)?.level>
+                  <div class="input-group input-group-lg border-bottom experd-white">
+                    {{competence.name}}
+                  </div>
+                </div>
+                <div class="col-md-2 text-center" *ngIf=getcompetenceSetLevel(competence)?.level>
+                  <span dropdown class="input-group input-group-lg border-bottom experd-white dropdown">
+                    <div id="simple-dropdown" dropdownToggle>
+                      {{getcompetenceSetLevel(competence)?.level || 0}}
+                      <i class="fa fa-caret-down experd-grey" aria-hidden="true"></i>
+                    </div>
+                    <ul class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+                      <li *ngFor="let competencelevel of company.competences[i].competenceLevels">
+                        <a class="dropdown-item" (click)="updateLevel(competence, competencelevel)">{{competencelevel.level}}</a>
+                      </li>
+                    </ul>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="container">
+          <div>
+            <div class="row mt-3">
+              <div class="col-12">
+                <h5>Competence
+                  <span class="float-right">Target Level</span>
+                </h5>
+              </div>
+            </div>
+            <div class="row" *ngFor="let competence of company.competences; let i = index">
+              <ng-template [ngIf]="i + 1 > (company.competences.length / 2) ">
+                <div class="col-md-10" *ngIf=getcompetenceSetLevel(competence)?.level>
+                  <div class="input-group input-group-lg border-bottom experd-white">
+                    {{competence.name}}
+                  </div>
+                </div>
+                <div class="col-md-2 text-center" *ngIf=getcompetenceSetLevel(competence)?.level>
+                  <span dropdown class="input-group input-group-lg border-bottom experd-white dropdown">
+                    <div id="simple-dropdown" dropdownToggle>
+                      {{getcompetenceSetLevel(competence)?.level || 0}}
+                      <i class="fa fa-caret-down experd-grey" aria-hidden="true"></i>
+                    </div>
+                    <ul class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+                      <li *ngFor="let competencelevel of company.competences[i].competenceLevels">
+                        <a class="dropdown-item" (click)="updateLevel(competence, competencelevel)">{{competencelevel.level}}</a>
+                      </li>
+                    </ul>
+                  </span>
+                </div>
+              </ng-template>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-center mt-3">
+        <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="submit()">Submit
+          <i class="fa fa-check experd-grey" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

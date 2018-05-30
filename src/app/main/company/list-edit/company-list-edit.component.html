@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6">
+    <table class="w-100 h-100">
+      <thead>
+        <tr>
+          <th *ngFor="let item of columns">{{item.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies | async">
+          <td class="experd-color">
+            <a [routerLink]="['/main/company/edit', company.id]">{{company.name}}</a>
+            <i class="fa fa-times experd-grey" (click)="delete(company)" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

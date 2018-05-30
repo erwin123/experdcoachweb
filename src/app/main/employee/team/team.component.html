@@ -1,0 +1,27 @@
+<div class="experd-tab-container has-tabs flex-row flex-span mb-2">
+  <table class="w-100 h-100">
+    <thead>
+      <tr>
+        <th *ngFor="let item of columns" (click)="sortBy(item)">{{item.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employeeteam of employeeteams">
+        <td class="experd-color"><a [routerLink]="[employeeteam.team.id]">{{employeeteam.team.name}}</a> </td>
+        <td class="experd-white">{{employeeteam.team.division}}</td>
+        <td class="experd-white">{{employeeteam.team.position}}</td>
+        <td class="experd-white">{{employeeteam.team?.employeeProfileHistories[0]?.profileStamp}}</td>
+        <td class="experd-white">{{ getTasks(false, employeeteam.team?.employeeTasks) }}</td>
+        <td class="experd-white">{{ getTasks(true, employeeteam.team?.employeeTasks) }}</td>
+        <td class="experd-white">{{employeeteam.team.team?.length || '-'}}</td>
+        <td class="experd-white">{{employeeteam.team.dob | age}}yo</td>
+        <td class="experd-white">{{employeeteam.team.sex}}</td>
+        <td class="experd-white">{{employeeteam.team.joinDate | date: 'd MMM y'}}</td>
+        <td class="experd-white">{{employeeteam.team.taskCreate == 0 ? '-' : employeeteam.team.taskCreate}}</td>
+        <td class="experd-white"><i class="fa fa-check experd-color" aria-hidden="true" *ngIf="employeeteam.team.doEvaluateCompetence == true"></i></td>
+        <td class="experd-white"><i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +employeeteam.team.overallRate >= i, 'fa-star-o': +employeeteam.team.overallRate < i }"
+            aria-hidden="true"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

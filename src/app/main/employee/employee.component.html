@@ -1,0 +1,16 @@
+<div>
+  <ul class="nav nav-tabs float-right" role="tablist">
+    <li class="nav-item">
+      <a class="h4 nav-link" (click)="gotoPath('team')" [ngClass]="{active: activeTab == 'team'}">Team</a>
+    </li>
+    <li class="nav-item">
+      <a class="h4 nav-link" (click)="gotoPath('task')" [ngClass]="{active: activeTab == 'task'}">Task</a>
+    </li>
+    <li class="nav-item">
+      <a class="h4 nav-link" (click)="gotoPath('profile')" [ngClass]="{active: activeTab == 'profile'}">Profile</a>
+    </li>
+  </ul>
+</div>
+<div class="flex-span flex-me">
+  <router-outlet class="w-100 h-100"></router-outlet>
+</div>

@@ -1,0 +1,68 @@
+<div class="experd-container experd-overlay h-100">
+  <div class="container">
+    <form (keydown)="keyDownFunction($event)">
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          Company Name
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+          <div class="input-group input-group-lg border-bottom">
+            <input type="text" name="name" class="form-control transparent-input" placeholder="Name of the Company" id="name" required [(ngModel)]="company.name"
+              aria-describedby="sizing-addon1" #spy>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          Email
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+          <div class="input-group input-group-lg border-bottom">
+            <input type="text" name="email" class="form-control transparent-input" placeholder="Email for Login" id="email" required [(ngModel)]="employee.email"
+              aria-describedby="sizing-addon1" #spy>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          Password
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-6 offset-md-3 text-center">
+          <div class="input-group input-group-lg border-bottom">
+            <input type="password" name="password" class="form-control transparent-input" placeholder="Password for Login" is="password" required
+              [(ngModel)]="employee.password" aria-describedby="sizing-addon1">
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+          Account Limit
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+          <div class="input-group input-group-lg border-bottom">
+            <input type="text" name="accountLimit" class="form-control transparent-input" placeholder="Employee Limit" id="accountLimit" required [(ngModel)]="company.accountLimit"
+              aria-describedby="sizing-addon1" #spy>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="error">
+        <div class="col-md-6 offset-md-3 text-center">
+          <p class="experd-white">{{error}}</p>
+        </div>
+      </div>
+      <div class="row mt-3 mb-2">
+        <div class="col-md-6 offset-md-3 text-center">
+          <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="submit()">Submit <i class="fa fa-check experd-grey" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

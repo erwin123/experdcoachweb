@@ -1,0 +1,13 @@
+.relative {
+  .align-middle {
+    position: absolute;
+    top: 40%;
+    font-size: 2em;
+    &.left-button {
+      left: -10px;
+    }
+    &.right-button {
+      right: -10px;
+    }
+  }
+}

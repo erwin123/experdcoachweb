@@ -1,0 +1,26 @@
+<table class="w-100 h-100">
+  <thead>
+    <tr>
+      <th class="experd-color">Name</th>
+      <th class="experd-color">Position</th>
+      <th colspan="2" class="experd-color">Team</th>
+      <th colspan="2" class="experd-color">Supervisor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees | async">
+      <td class="experd-color">
+        <span><a [routerLink]="['/main/company', companyId, 'employee', 'team', employee.id]">{{employee.name}}</a></span>
+      </td>
+      <td class="experd-white">{{employee.position}}</td>
+      <td class="experd-white">{{employee.team.length}}</td>
+      <td class="experd-white">
+        <div *ngFor="let team of employee.team">{{team.name}}</div>
+      </td>
+      <td class="experd-white">{{employee.supervisor.length}}</td>
+      <td class="experd-white">
+        <div *ngFor="let team of employee.supervisor">{{team.name}}</div>
+      </td>
+    </tr>
+  </tbody>
+</table>

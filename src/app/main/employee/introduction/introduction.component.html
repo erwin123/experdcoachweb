@@ -1,0 +1,14 @@
+<div class="experd-container h-100">
+  <h1 class="experd-color experd-margin-left h-100">Introduction</h1>
+  <div class="experd-container">
+    <p class="experd-grey">
+      <input type="text" name="profile" class="form-control transparent-input" placeholder="Put Company Profile Here" id="name" required [(ngModel)]="profile"
+      aria-describedby="sizing-addon1" #spy>
+    </p>
+  </div>
+  <div class="row mt-3 mb-2">
+    <div class="col-md-6 offset-md-3 text-center">
+      <button type="button" (click)="saveProfile()" class="btn btn-block button-experd button-center btn-lg">Save <i class="fa fa-check experd-grey" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>

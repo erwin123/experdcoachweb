@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-6">
+    <button type="button" class="btn btn-block button-experd button-center btn-lg float-right mb-1" [routerLink]="['/main/company', company.id, 'competence-set' , 'add']">Add Competence Set</button>
+    <table class="w-100 h-100">
+      <thead>
+        <tr>
+          <th *ngFor="let item of columns">{{item.title}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competence of competences | async">
+          <td class="experd-color">
+            <a [routerLink]="['/main/company', company.id, 'competence-set', competence.id]">{{competence.name}}</a>
+            <i class="fa fa-times experd-grey" (click)="delete(competence)" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

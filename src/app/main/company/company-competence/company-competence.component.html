@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-11">
+    <div class="row" *ngIf="hasBack">
+      <div class="col-12">
+        <app-experd-back></app-experd-back>
+      </div>
+    </div>
+    <table class="w-100 h-100">
+      <thead>
+        <tr>
+          <th class="col-2">Profile</th>
+          <th class="col-9">Definition</th>
+          <th class="col-1">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competence of competences | async">
+          <td class="experd-color col-2">
+            <a [routerLink]="['/main/competence', competence.id]">{{competence.name}}</a>
+          </td>
+          <td class="experd-white col-9">
+            {{competence.definition}}
+          </td>
+          <td class="col-1"><i class="fa fa-check experd-grey" [ngClass]="{'experd-color': findCompany(competence)}" (click)="addCompetence(competence)"
+              aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

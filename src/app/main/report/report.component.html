@@ -1,0 +1,225 @@
+<h2 class="experd-color">Report</h2>
+<h2 class="experd-grey">Overview</h2>
+<p class="experd-grey">Lorem ipsum</p>
+<table class="w-100 h-100">
+  <thead>
+    <tr>
+      <th *ngFor="let item of columns">{{item.title}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td class="experd-color">{{employee.name}}</td>
+      <td class="experd-white">{{employee.division}}</td>
+      <td class="experd-white">{{employee.position}}</td>
+      <td class="experd-white">{{employee?.employeeProfileHistories[0]?.profileStamp}}</td>
+      <td class="experd-white">{{ getTasks(false, employee?.employeeTasks) }}</td>
+      <td class="experd-white">{{ getTasks(true, employee?.employeeTasks) }}</td>
+      <td class="experd-white">{{employee.teamCount}}</td>
+      <td class="experd-white">{{employee.taskCreate == 0 ? '-' : employee.taskCreate}}</td>
+      <td class="experd-white">{{employee.dob | age}}yo</td>
+      <td class="experd-white">{{employee.sex}}</td>
+      <td class="experd-white">{{employee?.supervisor[0]?.name}}</td>
+      <td class="experd-white"><i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +employee.overallRate >= i, 'fa-star-o': +employee.overallRate < i }"
+          aria-hidden="true"></i></td>
+    </tr>
+    <tr>
+      <td *ngFor="let item of columns"></td>
+    </tr>
+    <tr>
+      <td class="experd-white" colspan="4">Total</td>
+      <td class="experd-white">{{totals.ongoing}}</td>
+      <td class="experd-white">{{totals.finished}}</td>
+      <td class="experd-white">{{totals.teamCount}}</td>
+      <td class="experd-white">{{totals.created}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td *ngFor="let item of columns"></td>
+    </tr>
+  </tbody>
+</table>
+<h2 class="experd-color">Coach & Coachee Report</h2>
+<div *ngFor="let coach of coachReport.coaches">
+  <div coach>
+    <h3 class="experd-grey">Coach</h3>
+    <h2 class="experd-color">{{coach.name}}</h2>
+    <h3 class="experd-grey">Coachee</h3>
+    <h2 class="experd-color" *ngFor="let coachee of coach.team">{{coachee.name}}</h2>
+    <h3 class="experd-color">{{coach.name}}</h3>
+    <div class="row">
+      <div class="col-3">
+        <p class="experd-grey">Company</p>
+        <p class="experd-grey">Division</p>
+        <p class="experd-grey">Title</p>
+        <p class="experd-grey">Sex</p>
+        <p class="experd-grey">Age</p>
+        <p class="experd-grey">Employement Period</p>
+        <p class="experd-grey">Profile</p>
+      </div>
+      <div class="col-9">
+        <p class="experd-grey"><span class="experd-white">{{company.name | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coach.division | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coach.position | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coach.sex | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coach.dob | age}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{getEmployeePeriod(coach.joinDate)}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coach?.employeeProfileHistories[0]?.profileStamp}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coach?.employeeProfileHistories[0]?.profile?.description}}</span></p>
+      </div>
+    </div>
+    <table class="w-100 h-100">
+      <tr>
+        <td>Coachee</td>
+        <td>Task On Going</td>
+        <td>Task Finish</td>
+        <td>Team</td>
+        <td>Create Task</td>
+        <td>Overall</td>
+      </tr>
+      <tr *ngFor="let coachee of coach.team">
+        <td class="experd-color">{{coachee.name}}</td>
+        <td class="experd-white">{{getTasks(false, coachee?.employeeTasks)}}</td>
+        <td class="experd-white">{{getTasks(true, coachee?.employeeTasks)}}</td>
+        <td class="experd-white">{{coachee.teamCount? coachee.teamCount : 0}}</td>
+        <td class="experd-white">{{coachee.taskCreate == 0 ? '-' : coachee.taskCreate}}</td>
+        <td class="experd-white"><i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +coachee.overallRate >= i, 'fa-star-o': +coachee.overallRate < i }"
+            aria-hidden="true"></i></td>
+      </tr>
+    </table>
+    <h3 class="experd-grey">Average Coaching Quality Rate</h3>
+    <span><i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +coach.overallRate >= i, 'fa-star-o': +coach.overallRate < i }"
+              aria-hidden="true"></i></span>
+    <h3 class="experd-grey">Overview</h3>
+    <p class="experd-grey">Lorem ipsum</p>
+  </div>
+  <div *ngFor="let coachee of coach.team">
+    <h3 class="experd-color">{{coachee.name}}</h3>
+    <div class="row">
+      <div class="col-3">
+        <p class="experd-grey">Coach</p>
+        <p class="experd-grey">Company</p>
+        <p class="experd-grey">Division</p>
+        <p class="experd-grey">Title</p>
+        <p class="experd-grey">Sex</p>
+        <p class="experd-grey">Age</p>
+        <p class="experd-grey">Employement Period</p>
+        <p class="experd-grey">Profile</p>
+      </div>
+      <div class="col-9">
+        <p class="experd-grey"><span class="experd-white">{{coach.name | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{company.name | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coachee.division | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coachee.position | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coachee.sex | titleCase}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coachee.dob | age}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{getEmployeePeriod(coachee.joinDate)}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coachee?.employeeProfileHistories[0]?.profileStamp}}</span></p>
+        <p class="experd-grey"><span class="experd-white">{{coachee?.employeeProfileHistories[0]?.profile?.description}}</span></p>
+      </div>
+    </div>
+    <table class="w-100 h-100">
+      <tr>
+        <td>Task On Going</td>
+        <td>Task Finish</td>
+        <td>Team</td>
+        <td>Create Task</td>
+        <td>Overall</td>
+      </tr>
+      <tr>
+        <td class="experd-white">{{getTasks(false, coachee?.employeeTasks)}}</td>
+        <td class="experd-white">{{getTasks(true, coachee?.employeeTasks)}}</td>
+        <td class="experd-white">{{coachee.teamCount? coachee.teamCount : 0}}</td>
+        <td class="experd-white">{{coachee.taskCreate == 0 ? '-' : coachee.taskCreate}}</td>
+        <td class="experd-white"><i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +coachee.overallRate >= i, 'fa-star-o': +coachee.overallRate < i }"
+            aria-hidden="true"></i></td>
+      </tr>
+    </table>
+    <ul class="list-group container">
+      <h3 class="experd-color">Competence</h3>
+      <div *ngFor="let competence of companycompetences; let i = index">
+        <li class="list-group-item row">
+          <div class="col-sm-8 offset-sm-2 text-left relative">
+            <p class="experd-grey">{{competence.name}}</p>
+            <p class="experd-grey top-right" *ngIf="i == 0">Target Level</p>
+          </div>
+        </li>
+        <li class="list-group-item row">
+          <div class="col-sm-8 offset-sm-2 text-center">
+            <app-progress-bar [label]="5" [completed]="getCompleted(competence, coachee?.employeeCompetence || [])" [showBefore]="true"
+              [completedBefore]="2"></app-progress-bar>
+          </div>
+        </li>
+      </div>
+      <h3 class="experd-color">Development Program Period</h3>
+      <h4 class="experd-grey">September 31th, 2016 - October 29th, 2016</h4>
+    </ul>
+    <h3 class="experd-color">{{coachee.name}}</h3>
+    <div class="row">
+      <div class="col-12">
+        <div *ngIf="coachee.employeeTasks.length == 0">No Tasks for this Employee</div>
+        <div class="row bottom-border" *ngFor="let task of coachee.employeeTasks">
+          <div *ngIf="task.isDone">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-5">
+                  <p class="experd-grey">From</p>
+                  <p class="experd-grey">Division</p>
+                  <p class="experd-grey">Competence</p>
+                  <p class="experd-grey">Duration</p>
+                </div>
+                <div class="col-7">
+                  <p class="experd-grey">: <span class="experd-white">{{task?.assignedBy?.name | titleCase}}</span></p>
+                  <p class="experd-grey">: <span class="experd-white">{{task?.divisionStamp | titleCase}}</span></p>
+                  <p class="experd-grey">: <span class="experd-white">{{task?.competenceStamp | titleCase}}</span></p>
+                  <p class="experd-grey">: <span class="experd-white">{{task?.startDate | date: 'dd/MM/yy'}} to {{task?.endDate | date: 'dd/MM/yy'}}</span></p>
+                </div>
+              </div>
+              <p class="experd-grey">Development</p>
+              <p class="experd-grey dev-info" *ngFor="let development of task?.employeeTaskDevelopments"><i [ngClass]="{'icon-check-empty': !development.passed, 'icon-check-marked': development.passed}" class="icon-check-empty experd-grey"
+                  aria-hidden="true"></i>{{development.description}}</p>
+            </div>
+            <div class="col-6">
+              <p class="experd-grey"><b>Supervisor Review</b>
+                <span *ngFor="let i of [1,2,3,4,5]" class="float-right experd-color" tappable [ngClass]="{'icon-star-filled': task?.employeeTaskSupervisor?.rating >= i, 'icon-star-outline': task?.employeeTaskSupervisor?.rating < i}"></span>
+              </p>
+              <p class="experd-white">{{task?.employeeTaskSupervisor?.review}}</p><br><br>
+              <p class="experd-grey"><b>Team Review</b>
+                <span *ngFor="let i of [1,2,3,4,5]" class="float-right experd-color" tappable [ngClass]="{'icon-star-filled': task?.Rating >= i, 'icon-star-outline': task?.Rating < i}"></span>
+              </p>
+              <p class="experd-white">{{task?.Resume}}</p>
+            </div>
+            <hr>
+          </div>
+          <div *ngIf="!task.isDone">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-5">
+                  <p class="experd-grey">From</p>
+                  <p class="experd-grey">Division</p>
+                  <p class="experd-grey">Competence</p>
+                  <p class="experd-grey">Duration</p>
+                </div>
+                <div class="col-7">
+                  <p class="experd-grey">: <span class="experd-white">{{task?.assignedBy?.name | titleCase}}</span></p>
+                  <p class="experd-grey">: <span class="experd-white">{{task?.divisionStamp | titleCase}}</span></p>
+                  <p class="experd-grey">: <span class="experd-white">{{task?.competenceStamp | titleCase}}</span></p>
+                  <p class="experd-grey">: <span class="experd-white">{{task?.startDate | date: 'dd/MM/yy'}} to {{task?.endDate | date: 'dd/MM/yy'}}</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <p class="experd-grey">Development</p>
+              <p class="experd-white dev-info" *ngFor="let development of task?.employeeTaskDevelopments"><i [ngClass]="{'icon-check-empty': !development.passed, 'icon-check-marked': development.passed}" class="icon-check-empty experd-color"
+                  aria-hidden="true"></i>{{development.description}}</p>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

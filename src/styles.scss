@@ -1,0 +1,511 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/font-awesome/css/font-awesome.css';
+body {
+  background-color: rgb(40, 47, 57) !important;
+  // background: url('../../assets/images/pattern.png');
+  background: rgb(40, 47, 57) url('assets/images/pattern.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #555e6c;
+  font-family: 'open_sansregular';
+}
+
+@font-face {
+  font-family: 'open_sansregular';
+  src: url('assets/fonts/opensans_regular/OpenSans-Regular-webfont.eot');
+  src: url('assets/fonts/opensans_regular/OpenSans-Regular-webfont.eot?iefix') format('eot'), url('assets/fonts/opensans_regular/OpenSans-Regular-webfont.woff') format('woff'), url('assets/fonts/opensans_regular/OpenSans-Regular-webfont.ttf') format('truetype'), url('assets/fonts/opensans_regular/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "experd-font";
+  src: url("assets/fonts/experd-font/experd-font.eot");
+  src: url("assets/fonts/experd-font/experd-font.eot?#iefix") format("embedded-opentype"), url("assets/fonts/experd-font/experd-font.woff") format("woff"), url("assets/fonts/experd-font/experd-font.ttf") format("truetype"), url("assets/fonts/experd-font/experd-font.svg#experd-font") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "experd-font" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "experd-font" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-experd-logo-wide:before {
+  content: "\62";
+}
+
+.icon-profile-button:before {
+  content: "\63";
+}
+
+.icon-profile-icon:before {
+  content: "\64";
+}
+
+.icon-task-button:before {
+  content: "\65";
+}
+
+.icon-task-icon:before {
+  content: "\66";
+}
+
+.icon-team-button:before {
+  content: "\67";
+}
+
+.icon-experd-logo:before {
+  content: "\61";
+}
+
+.icon-check-empty:before {
+  content: "\69";
+}
+
+.icon-star-filled:before {
+  content: "\6b";
+}
+
+.icon-check-marked:before {
+  content: "\6a";
+}
+
+.icon-star-outline:before {
+  content: "\6c";
+}
+
+.icon-team-icon:before {
+  content: "\6d";
+}
+
+.icon-arrow-left:before {
+  content: "\6f";
+}
+
+.icon-arrow-right:before {
+  content: "\70";
+}
+
+.icon-email:before {
+  content: "\68";
+}
+
+.icon-lock:before {
+  content: "\6e";
+}
+
+.icon-check-off:before {
+  content: "\71";
+}
+
+.icon-check-on:before {
+  content: "\72";
+}
+
+// html * {
+//   font-weight: 600 !important;
+// }
+.button-round {
+  padding: 0 0.2rem;
+  border-radius: 64px;
+}
+
+.button-experd {
+  padding: 0 0.2rem;
+  font-size: 1em;
+  border-radius: 64px;
+  color: #FBAA33;
+  border-color: #555e6c;
+  text-transform: none;
+  background-color: transparent !important;
+  height: 35px;
+  width: 200px;
+  &:active:focus,
+  &.active:focus,
+  &:focus,
+  &:active,
+  &.active {
+    outline: none;
+    border-color: #FBAA33;
+    background-color: #FBAA33 !important;
+    color: #555e6c;
+  }
+  &.button-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.button-grey {
+    color: #555e6c;
+  }
+  &.button-white {
+    color: #fff;
+  }
+  .icon-arrow-right {
+    position: relative;
+    top: 5px;
+    left: 5px;
+  }
+}
+
+.experd-color {
+  color: #FBAA33;
+}
+
+.experd-grey {
+  color: #555e6c;
+}
+
+.experd-white {
+  color: #fff;
+}
+
+.experd-red {
+  color: red;
+}
+
+.experd-container {
+  border: 1px solid #555e6c;
+  border-radius: 32px;
+  padding: 32px;
+}
+
+.experd-overlay {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.experd-tab-container {
+  border: 1px solid #555e6c;
+  border-radius: 32px;
+  padding: 32px;
+  &.has-tabs {
+    border-top-right-radius: 0;
+  }
+}
+
+.experd-margin-left {
+  margin-left: 32px;
+}
+
+table {
+  border-collapse: inherit !important;
+  border-spacing: 0;
+  .white,
+  .white a {
+    color: #fff;
+  }
+  .experd-color,
+  .experd-color a {
+    color: #FBAA33 !important;
+  }
+  th,
+  td {
+    border: 1px solid #555e6c;
+    padding: 0.5em 1em;
+    text-align: center;
+  }
+  thead {
+    color: #FBAA33;
+    tr:first-child th:first-child {
+      border-radius: 1.5em 0 0 1.5em;
+    }
+    tr:first-child th:last-child {
+      border-radius: 0 1.5em 1.5em 0;
+    }
+    tr:first-child th:first-child:last-child {
+      border-radius: 1.5em;
+    }
+  }
+  tbody {
+    &:before {
+      content: "-";
+      display: block;
+      line-height: 1em;
+      color: transparent;
+    }
+    tr:first-child td:first-child {
+      border-radius: 1.5em 0 0 0;
+    }
+    tr:first-child td:last-child {
+      border-radius: 0 1.5em 0 0;
+    }
+    tr:first-child td:first-child:last-child {
+      border-radius: 1.5em 1.5em 0 0;
+    }
+    tr:last-child td:first-child {
+      border-radius: 0 0 0 1.5em;
+    }
+    tr:last-child td:last-child {
+      border-radius: 0 0 1.5em 0;
+    }
+    tr:last-child td:first-child:last-child {
+      border-radius: 0 0 1.5em 1.5em;
+    }
+    tr:first-child:last-child td:first-child {
+      border-radius: 1.5em 0 0 1.5em;
+    }
+    tr:first-child:last-child td:last-child {
+      border-radius: 0 1.5em 1.5em 0;
+    }
+    tr:first-child:last-child td:first-child:last-child {
+      border-radius: 1.5em;
+    }
+    tr:nth-child(even) {
+      background: rgb(44, 53, 62);
+    }
+  }
+}
+
+.nav-tabs {
+  border-bottom: 0;
+  .nav-item {
+    margin-left: 0 !important;
+    &:first-child {
+      .nav-link {
+        border-top-left-radius: 1rem;
+      }
+    }
+    &:last-child {
+      .nav-link {
+        border-top-right-radius: 1rem;
+      }
+    }
+  }
+  .nav-link {
+    color: #555e6c;
+    background-color: #1e252f;
+    padding: 0.5em 3em;
+    border-bottom: 1px solid #555e6c;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    &.active,
+    &:hover,
+    &.active:hover {
+      color: #FBAA33 !important;
+      background-color: transparent;
+      border-color: #555e6c #555e6c transparent;
+      border-bottom: 0;
+    }
+  }
+}
+
+.flex-noheight {
+  display: flex;
+  flex-flow: column;
+}
+
+.flex-me {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row;
+  height: 100%;
+}
+
+.flex-span {
+  flex: 1 1 auto;
+}
+
+.border-right {
+  border-right: 1px solid #555e6c;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+app-employee,
+app-profile,
+app-task,
+app-team,
+app-competence-add,
+app-company-add,
+app-competence-overview,
+app-competence-set-detail,
+app-add-form,
+app-team-edit,
+app-competence-detail,
+app-task,
+app-profile-edit-competence {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+app-competence,
+app-competence-manage {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  overflow-y: auto;
+}
+
+app-competence-detail {
+  justify-content: space-between;
+}
+
+.completed {
+  stroke: #FBAA33;
+  fill: #FBAA33;
+}
+
+.completeTarget {
+  stroke: #FFF;
+  fill: #FFF;
+}
+
+.not-complete {
+  stroke: #555e6c;
+  fill: #555e6c;
+}
+
+.list-group-item {
+  background-color: inherit;
+  border: inherit;
+}
+
+.transparent-input {
+  background-color: transparent !important;
+  border: none !important;
+  color: #fff;
+  &:focus {
+    color: #fff;
+  }
+}
+
+.border-bottom {
+  border-bottom: 1px solid #555e6c;
+}
+
+.overflowMe {
+  overflow-y: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.input-group.input-group-lg {
+  padding: 0.75rem 1.5rem;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  &:active:focus,
+  &.active:focus,
+  &:focus,
+  &:active,
+  &.active {
+    outline: none;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1e252f;
+  color: white;
+  /*max-width: 55px;*/
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 150;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #555e6c;
+  .fa-caret-down {
+    content: "\F0D8";
+  }
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: transparent;
+}
+
+.relative {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.modal-content,
+.modal-header,
+.modal-body {
+  background-color: #282f39 !important;
+}
+
+.table thead th,
+.table tbody td {
+  border: 1px solid #555e6c;
+}
+
+app-main {
+   ::-webkit-scrollbar {
+    width: 12px;
+  }
+   ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+   ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.ngx-datepicker-calendar-container {
+  z-index: 200;
+  .main-calendar-days {
+    max-height: 275px !important;
+  }  
+}

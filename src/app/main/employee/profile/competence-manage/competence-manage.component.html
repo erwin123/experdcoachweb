@@ -1,0 +1,3 @@
+<app-experd-back></app-experd-back>
+<button type="button" *ngFor="let competence of companycompetences; let i = index" class="btn btn-block button-experd button-center btn-lg"
+  [routerLink]="[competence.id]">{{competence.name}}</button>

@@ -1,0 +1,70 @@
+<div class="experd-tab-container has-tabs flex-me flex-span overflowMe">
+  <div class="row" *ngIf="showBack">
+    <div class="col-12">
+      <app-experd-back></app-experd-back>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="tasks.length == 0">No Tasks for this Employee</div>
+      <div class="row bottom-border" *ngFor="let task of tasks">
+        <div *ngIf="task.isDone">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-5">
+                <p class="experd-grey">From</p>
+                <p class="experd-grey">Division</p>
+                <p class="experd-grey">Competence</p>
+                <p class="experd-grey">Duration</p>
+              </div>
+              <div class="col-7">
+                <p class="experd-grey">: <span class="experd-white">{{task?.assignedBy?.name | titleCase}}</span></p>
+                <p class="experd-grey">: <span class="experd-white">{{task?.divisionStamp | titleCase}}</span></p>
+                <p class="experd-grey">: <span class="experd-white">{{task?.competenceStamp | titleCase}}</span></p>
+                <p class="experd-grey">: <span class="experd-white">{{task?.startDate | date: 'dd/MM/yy'}} to {{task?.endDate | date: 'dd/MM/yy'}}</span></p>
+              </div>
+            </div>
+            <p class="experd-grey">Development</p>
+            <p class="experd-grey dev-info" *ngFor="let development of task?.employeeTaskDevelopments"><i [ngClass]="{'icon-check-empty': !development.passed, 'icon-check-marked': development.passed}" class="icon-check-empty experd-grey"
+                aria-hidden="true"></i>{{development.description}}</p>
+          </div>
+          <div class="col-6">
+            <p class="experd-grey"><b>Supervisor Review</b>
+              <span *ngFor="let i of [1,2,3,4,5]" class="float-right experd-color" tappable [ngClass]="{'icon-star-filled': task?.employeeTaskSupervisor?.rating >= i, 'icon-star-outline': task?.employeeTaskSupervisor?.rating < i}"></span>
+            </p>
+            <p class="experd-white">{{task?.employeeTaskSupervisor?.review}}</p><br><br>
+            <p class="experd-grey"><b>Team Review</b>
+              <span *ngFor="let i of [1,2,3,4,5]" class="float-right experd-color" tappable [ngClass]="{'icon-star-filled': task?.Rating >= i, 'icon-star-outline': task?.Rating < i}"></span>
+            </p>
+            <p class="experd-white">{{task?.Resume}}</p>
+          </div>
+          <hr>
+        </div>
+        <div *ngIf="!task.isDone">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-5">
+                <p class="experd-grey">From</p>
+                <p class="experd-grey">Division</p>
+                <p class="experd-grey">Competence</p>
+                <p class="experd-grey">Duration</p>
+              </div>
+              <div class="col-7">
+                <p class="experd-grey">: <span class="experd-white">{{task?.assignedBy?.name | titleCase}}</span></p>
+                <p class="experd-grey">: <span class="experd-white">{{task?.divisionStamp | titleCase}}</span></p>
+                <p class="experd-grey">: <span class="experd-white">{{task?.competenceStamp | titleCase}}</span></p>
+                <p class="experd-grey">: <span class="experd-white">{{task?.startDate | date: 'dd/MM/yy'}} to {{task?.endDate | date: 'dd/MM/yy'}}</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <p class="experd-grey">Development</p>
+            <p class="experd-white dev-info" *ngFor="let development of task?.employeeTaskDevelopments"><i [ngClass]="{'icon-check-empty': !development.passed, 'icon-check-marked': development.passed}" class="icon-check-empty experd-color"
+                aria-hidden="true"></i>{{development.description}}</p>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

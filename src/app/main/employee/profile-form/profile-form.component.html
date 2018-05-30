@@ -1,0 +1,113 @@
+<div class="experd-tab-container flex-row flex-span mb-2">
+  <form (keydown)="keyDownFunction($event)">
+    <div class="row">
+      <div class="col-12">
+        <app-experd-back></app-experd-back>
+        <h4 class="experd-color ml-1 mt-1">{{formTitle}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="container overflowMe">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h5 class="mb-0">Name</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="input-group input-group-lg border-bottom pt-0">
+                <input type="text" name="name" class="form-control transparent-input" placeholder="Name of the Employee" id="name" required
+                  [(ngModel)]="employee.name" maxlength="12" aria-describedby="sizing-addon1" #spy>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h5 class="mb-0">Division</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="input-group input-group-lg border-bottom pt-0">
+                <input type="text" name="division" class="form-control transparent-input" placeholder="Current Division" id="division" required
+                  [(ngModel)]="employee.division" aria-describedby="sizing-addon1" #spy>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h5 class="mb-0">Position</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="input-group input-group-lg border-bottom pt-0">
+                <input type="text" name="position" class="form-control transparent-input" placeholder="Current Position" id="position" required
+                  [(ngModel)]="employee.position" aria-describedby="sizing-addon1" #spy>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h5 class="mb-0">Sex</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="input-group input-group-lg border-bottom pt-0">
+                <input type="text" name="sex" class="form-control transparent-input" placeholder="Sex" id="sex" required [(ngModel)]="employee.sex"
+                  aria-describedby="sizing-addon1" #spy>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h5 class="mb-0">Date of Birth</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="input-group input-group-lg border-bottom pt-0">
+                  <ng-datepicker name="dob" [options]="options" [(ngModel)]="dob"></ng-datepicker>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="experd-grey mt-2">
+                <h5 class="mb-0">Join Date</h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="input-group input-group-lg border-bottom pt-0">
+                  <ng-datepicker name="joinDate" [options]="options" [(ngModel)]="joinDate"></ng-datepicker>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-center mt-3">
+        <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="submit()">Submit <i class="fa fa-check experd-grey" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </form>
+</div>

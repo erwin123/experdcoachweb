@@ -1,0 +1,82 @@
+<div class="experd-tab-container flex-row flex-span mb-2">
+  <form (keydown)="keyDownFunction($event)" class="row">
+    <div class="col-6 border-right">
+      <div class="flex-me flex-span space-between">
+        <div>
+          <app-experd-back></app-experd-back>
+          <h2 class="experd-color mt-1">{{formTitle}}</h2>
+          <div class="container">
+            <div class="row mt-3">
+              <div class="col-md-10">
+                Competence
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-10 text-center">
+                <div class="input-group input-group-lg border-bottom">
+                  <input type="text" name="name" class="form-control transparent-input" placeholder="Name of the Competence" id="name" required
+                    [(ngModel)]="competence.name" aria-describedby="sizing-addon1" #spy>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-10">
+                Definition
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-10 text-center">
+                <div class="input-group input-group-lg border-bottom">
+                  <input type="text" name="definition" class="form-control transparent-input" placeholder="Describe the Competence" id="definition"
+                    required [(ngModel)]="competence.definition" aria-describedby="sizing-addon1" #spy>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-10">
+                Key Behaviours
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-10 text-center">
+                <div class="input-group input-group-lg border-bottom">
+                  <input type="text" name="keybehaviour" class="form-control transparent-input" placeholder="What is the Key Behaviour?" id="keybehaviour"
+                    required [(ngModel)]="competence.keybehaviour" aria-describedby="sizing-addon1" #spy>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="error">
+              <div class="col-md-10 text-center">
+                <p class="experd-white">{{error}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 text-center mt-2">
+            <button type="button" class="btn btn-block button-experd button-center btn-lg" (click)="submit()">Submit <i class="fa fa-check experd-grey" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 flex-me">
+      <div class="container overflowMe">
+        <div *ngFor="let item of competenceLevels; let i = index">
+          <div class="row mt-3">
+            <div class="col-md-10">
+              Level {{i}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 text-center">
+              <div class="input-group input-group-lg border-bottom">
+                <input type="text" [ngModelOptions]="{standalone: true}" class="form-control transparent-input" placeholder="Put a Description here"
+                  required [(ngModel)]="item.description" aria-describedby="sizing-addon1" #spy>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<div>
+  <ul class="list-group container">
+    <div *ngFor="let competence of competences; let i = index">
+      <li class="list-group-item row" *ngIf="competence.target > 0 || competence.value > 0">
+        <div class="col-sm-8 offset-sm-2 text-left relative">
+          <p class="experd-grey">{{competence.name}}</p>
+          <p class="experd-grey top-right" *ngIf="i == 0">Target Level</p>
+        </div>
+      </li>
+      <li class="list-group-item row" *ngIf="competence.target > 0 || competence.value > 0">
+        <div class="col-sm-8 offset-sm-2 text-center">
+          <app-progress-bar [label]="competence?.target" [completed]="competence?.value"></app-progress-bar>
+        </div>
+      </li>
+    </div>
+  </ul>
+  <div class="relative">
+    <button type="button" class="btn btn-block button-experd btn-lg top-right" [routerLink]="['manage']">Manage Competence</button>
+  </div>
+</div>

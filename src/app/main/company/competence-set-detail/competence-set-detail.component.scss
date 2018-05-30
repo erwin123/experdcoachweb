@@ -1,0 +1,24 @@
+span.input-group {
+  padding-left: 0;
+  padding-right: 0;
+  a[dropdownToggle] {
+    color: #fff;
+    &:after {
+      content: none;
+    }
+  }
+}
+
+.ddl span{
+  padding: 10px;
+  
+}
+
+.ddl span:first-child{
+  width: 300px;
+}
+.ddl span:first-child i{
+  position: absolute;
+  right: 0;
+  padding: 4px 17px;
+}

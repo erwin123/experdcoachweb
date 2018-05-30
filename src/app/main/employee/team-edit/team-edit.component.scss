@@ -1,0 +1,15 @@
+i.fa-times {
+  position: absolute;
+  right: -20px;
+  font-size: 1.4em;
+  top: 20px;
+}
+
+span.input-group {
+  a[dropdownToggle] {
+    color: #fff;
+    &:after {
+      content: none;
+    }
+  }
+}
