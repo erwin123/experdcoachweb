@@ -20,8 +20,9 @@
 * }
 **/
 export class LoopBackConfig {
-  //public static path: string = 'https://api.experd.com/api';
-   public static path: string = 'http://localhost:3000';
+  //public static path: string = 'https://192.168.100.210/api';
+  public static path: string = 'https://api.experd.com/api';
+  //public static path: string = 'http://localhost:3000';
   // public static path: string = 'https://experdapi.herokuapp.com';
   // public static path: string = 'http://go.dataon.com/experd';
   public static version: string | number = 'api';

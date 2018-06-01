@@ -13,13 +13,16 @@
   <thead>
     <tr>
       <th *ngFor="let item of columns" (click)="sortBy(item)" [class.pointer-hand]="item.sortAble">{{item.title}}
-        <i *ngIf="item.sortAble" class="fa" [class.fa-sort-asc]="item.direction == 'desc'"
-        [class.fa-sort-desc]="item.direction == 'asc'" [class.fa-sort]= "item.direction == ''" aria-hidden="true"></i></th>
+        <i *ngIf="item.sortAble" class="fa" [class.fa-sort-asc]="item.direction == 'desc'" [class.fa-sort-desc]="item.direction == 'asc'"
+          [class.fa-sort]="item.direction == ''" aria-hidden="true"></i>
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let employee of employees">
-      <td class="experd-color"><a [routerLink]="['employee', employee.id, 'profile']">{{employee.name}}</a> </td>
+      <td class="experd-color">
+        <a [routerLink]="['employee', employee.id, 'profile']">{{employee.name}}</a>
+      </td>
       <td class="experd-white">{{employee.division}}</td>
       <td class="experd-white">{{employee.position}}</td>
       <td class="experd-white">{{employee?.employeeProfileHistories[0]?.profileStamp}}</td>
@@ -30,9 +33,14 @@
       <td class="experd-white">{{employee.sex}}</td>
       <td class="experd-white">{{employee.joinDate | date: 'd MMM y'}}</td>
       <td class="experd-white">{{employee?.assignedBy.length}}</td>
-      <td class="experd-white"><i class="fa fa-check experd-color" aria-hidden="true" *ngIf="employee.doEvaluateCompetence == true"></i></td>
-      <td class="experd-white"><i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +employee.overallRate >= i, 'fa-star-o': +employee.overallRate < i }"
-          aria-hidden="true"></i></td>
+      <td class="experd-white">
+        <i class="fa fa-check experd-color" aria-hidden="true" *ngIf="employee.doEvaluateCompetence == true"></i>
+      </td>
+      <td class="experd-white">
+        <i *ngFor="let i of [1,2,3,4,5]" class="fa experd-color" [ngClass]="{'fa-star': +employee.overallRate >= i, 'fa-star-o': +employee.overallRate < i }"
+          aria-hidden="true"></i>
+      </td>
+      <td class="experd-white">{{role[employee.roleId]}}</td>
     </tr>
   </tbody>
 </table>
@@ -70,7 +78,9 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of uploader.queue">
-                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td>
+                      <strong>{{ item?.file?.name }}</strong>
+                    </td>
                     <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                     <td *ngIf="uploader.options.isHTML5">
                       <div class="progress" style="margin-bottom: 0;">
@@ -78,20 +88,26 @@
                       </div>
                     </td>
                     <td class="text-center">
-                      <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                      <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                      <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                      <span *ngIf="item.isSuccess">
+                        <i class="glyphicon glyphicon-ok"></i>
+                      </span>
+                      <span *ngIf="item.isCancel">
+                        <i class="glyphicon glyphicon-ban-circle"></i>
+                      </span>
+                      <span *ngIf="item.isError">
+                        <i class="glyphicon glyphicon-remove"></i>
+                      </span>
                     </td>
                     <td nowrap>
                       <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                            <span class="glyphicon glyphicon-upload"></span> Upload
-                        </button>
+                        <span class="glyphicon glyphicon-upload"></span> Upload
+                      </button>
                       <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
-                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                        </button>
+                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                      </button>
                       <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
-                            <span class="glyphicon glyphicon-trash"></span> Remove
-                        </button>
+                        <span class="glyphicon glyphicon-trash"></span> Remove
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -104,13 +120,13 @@
                   </div>
                 </div>
                 <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                  <span class="glyphicon glyphicon-upload"></span> Upload all
                 </button>
                 <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                  <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
                 </button>
                 <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                  <span class="glyphicon glyphicon-trash"></span> Remove all
                 </button>
               </div>
             </div>

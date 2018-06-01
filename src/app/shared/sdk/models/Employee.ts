@@ -5,33 +5,35 @@ import {
   CompetenceSet,
   Competence,
   EmployeeCompetence,
+  EmployeeCompetenceTarget,
   EmployeeTask
 } from '../index';
 
 declare var Object: any;
 export interface EmployeeInterface {
-  "name"?: any;
-  "division"?: any;
-  "position"?: any;
-  "sex"?: any;
-  "dob"?: any;
-  "joinDate"?: any;
-  "doProfileTest"?: any;
-  "doEvaluateCompetence"?: any;
-  "overallRate"?: any;
-  "realm"?: any;
-  "username"?: any;
-  "password": any;
+  "name"?: string;
+  "division"?: string;
+  "position"?: string;
+  "sex"?: string;
+  "dob"?: Date;
+  "joinDate"?: Date;
+  "doProfileTest"?: boolean;
+  "doEvaluateCompetence"?: boolean;
+  "overallRate"?: number;
+  "roleId": number;
+  "realm"?: string;
+  "username"?: string;
+  "password": string;
   "challenges"?: any;
-  "email": any;
-  "emailVerified"?: any;
-  "verificationToken"?: any;
-  "status"?: any;
-  "created"?: any;
-  "lastUpdated"?: any;
-  "id"?: any;
-  "companyId"?: any;
-  "competenceSetId"?: any;
+  "email": string;
+  "emailVerified"?: boolean;
+  "verificationToken"?: string;
+  "status"?: string;
+  "created"?: Date;
+  "lastUpdated"?: Date;
+  "id"?: number;
+  "companyId"?: number;
+  "competenceSetId"?: number;
   accessTokens?: any[];
   adminOf?: Company;
   company?: Company;
@@ -39,7 +41,7 @@ export interface EmployeeInterface {
   competenceSet?: CompetenceSet;
   competences?: Competence[];
   employeeCompetence?: EmployeeCompetence[];
-  employeeCompetenceTarget?: EmployeeCompetence[];
+  employeeCompetenceTarget?: EmployeeCompetenceTarget[];
   employeeTasks?: EmployeeTask[];
   assignedBy?: EmployeeTask[];
   team?: any[];
@@ -47,28 +49,29 @@ export interface EmployeeInterface {
 }
 
 export class Employee implements EmployeeInterface {
-  "name": any;
-  "division": any;
-  "position": any;
-  "sex": any;
-  "dob": any;
-  "joinDate": any;
-  "doProfileTest": any;
-  "doEvaluateCompetence": any;
-  "overallRate": any;
-  "realm": any;
-  "username": any;
-  "password": any;
+  "name": string;
+  "division": string;
+  "position": string;
+  "sex": string;
+  "dob": Date;
+  "joinDate": Date;
+  "doProfileTest": boolean;
+  "doEvaluateCompetence": boolean;
+  "overallRate": number;
+  "roleId": number;
+  "realm": string;
+  "username": string;
+  "password": string;
   "challenges": any;
-  "email": any;
-  "emailVerified": any;
-  "verificationToken": any;
-  "status": any;
-  "created": any;
-  "lastUpdated": any;
-  "id": any;
-  "companyId": any;
-  "competenceSetId": any;
+  "email": string;
+  "emailVerified": boolean;
+  "verificationToken": string;
+  "status": string;
+  "created": Date;
+  "lastUpdated": Date;
+  "id": number;
+  "companyId": number;
+  "competenceSetId": number;
   accessTokens: any[];
   adminOf: Company;
   company: Company;
@@ -76,7 +79,7 @@ export class Employee implements EmployeeInterface {
   competenceSet: CompetenceSet;
   competences: Competence[];
   employeeCompetence: EmployeeCompetence[];
-  employeeCompetenceTarget: EmployeeCompetence[];
+  employeeCompetenceTarget: EmployeeCompetenceTarget[];
   employeeTasks: EmployeeTask[];
   assignedBy: EmployeeTask[];
   team: any[];
@@ -114,51 +117,56 @@ export class Employee implements EmployeeInterface {
       properties: {
         "name": {
           name: 'name',
-          type: 'any'
+          type: 'string'
         },
         "division": {
           name: 'division',
-          type: 'any'
+          type: 'string'
         },
         "position": {
           name: 'position',
-          type: 'any'
+          type: 'string'
         },
         "sex": {
           name: 'sex',
-          type: 'any'
+          type: 'string'
         },
         "dob": {
           name: 'dob',
-          type: 'any'
+          type: 'Date'
         },
         "joinDate": {
           name: 'joinDate',
-          type: 'any'
+          type: 'Date'
         },
         "doProfileTest": {
           name: 'doProfileTest',
-          type: 'any'
+          type: 'boolean'
         },
         "doEvaluateCompetence": {
           name: 'doEvaluateCompetence',
-          type: 'any'
+          type: 'boolean'
         },
         "overallRate": {
           name: 'overallRate',
-          type: 'any'
+          type: 'number'
+        },
+        "roleId": {
+          name: 'roleId',
+          type: 'number',
+          default: 31
         },
         "realm": {
           name: 'realm',
-          type: 'any'
+          type: 'string'
         },
         "username": {
           name: 'username',
-          type: 'any'
+          type: 'string'
         },
         "password": {
           name: 'password',
-          type: 'any'
+          type: 'string'
         },
         "credentials": {
           name: 'credentials',
@@ -170,39 +178,39 @@ export class Employee implements EmployeeInterface {
         },
         "email": {
           name: 'email',
-          type: 'any'
+          type: 'string'
         },
         "emailVerified": {
           name: 'emailVerified',
-          type: 'any'
+          type: 'boolean'
         },
         "verificationToken": {
           name: 'verificationToken',
-          type: 'any'
+          type: 'string'
         },
         "status": {
           name: 'status',
-          type: 'any'
+          type: 'string'
         },
         "created": {
           name: 'created',
-          type: 'any'
+          type: 'Date'
         },
         "lastUpdated": {
           name: 'lastUpdated',
-          type: 'any'
+          type: 'Date'
         },
         "id": {
           name: 'id',
-          type: 'any'
+          type: 'number'
         },
         "companyId": {
           name: 'companyId',
-          type: 'any'
+          type: 'number'
         },
         "competenceSetId": {
           name: 'competenceSetId',
-          type: 'any'
+          type: 'number'
         },
       },
       relations: {
@@ -243,8 +251,8 @@ export class Employee implements EmployeeInterface {
         },
         employeeCompetenceTarget: {
           name: 'employeeCompetenceTarget',
-          type: 'EmployeeCompetence[]',
-          model: 'EmployeeCompetence'
+          type: 'EmployeeCompetenceTarget[]',
+          model: 'EmployeeCompetenceTarget'
         },
         employeeTasks: {
           name: 'employeeTasks',

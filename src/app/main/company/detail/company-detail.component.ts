@@ -38,6 +38,8 @@ export class CompanyDetailComponent implements OnInit {
   public uploader: FileUploader;
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
+  public currentRole;
+  public role = Role;
 
   constructor(
     public communicationService: CommunicationService,
@@ -48,7 +50,7 @@ export class CompanyDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let currentRole = localStorage.getItem("myRole");
+    this.currentRole = localStorage.getItem("myRole");
     this.columns = [{
       name: 'name',
       title: 'Name',
@@ -114,12 +116,16 @@ export class CompanyDetailComponent implements OnInit {
       name: 'overall',
       title: 'Overall Rate',
       classes: ['white']
+    }, {
+      name: 'role',
+      title: 'Role',
+      classes: ['white']
     }];
 
     this.sub = this.route.params.subscribe(params => {
       if (params['companyId']) {
         this.companyId = +params['companyId'];
-        const URL = LoopBackConfig.getPath() + '/api/employees/upload?companyId=' + this.companyId + "&roleid="+currentRole;
+        const URL = LoopBackConfig.getPath() + '/api/employees/upload?companyId=' + this.companyId + "&roleid="+this.currentRole;
         this.uploader = new FileUploader({ url: URL });
         console.log('ketemu', params['companyId']);
         this.companyApi
@@ -167,6 +173,7 @@ export class CompanyDetailComponent implements OnInit {
     roleHierarchy.forEach(element => {
       roles.push(element.childId);
     });
+    console.log(roles);
     this.employeeApi
       .find({
         order: this.orderBy.concat(' ', this.orderASC ? 'ASC' : 'DESC'),
@@ -224,7 +231,7 @@ export class CompanyDetailComponent implements OnInit {
   exportData() {
 
     this.http
-      .get(LoopBackConfig.getPath() + '/api/employees/download?company=' + this.companyId,
+      .get(LoopBackConfig.getPath() + '/api/employees/download?company=' + this.companyId + "&roleid="+this.currentRole,
         { responseType: ResponseContentType.Blob })
       .map((res: Response) => res.blob())
       .subscribe(
@@ -247,4 +254,18 @@ export class CompanyDetailComponent implements OnInit {
     return number === 0 ? '-' : number;
   }
 
+}
+
+export enum Role {
+  admin	=	1	,
+  Dirut	=	2	,
+  Direktur	=	3	,
+  Kadiv	=	4	,
+  Wakadiv	=	5 ,
+  Kadept	=	6	,
+  Wakadept	=	7	,
+  SPV	=	8	,
+  Koordinator	=	9	,
+  Staff	=	10	,
+  NonStaff	=	11	,
 }

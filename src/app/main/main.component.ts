@@ -80,6 +80,7 @@ export class MainComponent implements OnInit {
   }
 
   logout() {
+    localStorage.removeItem('hierarchy');
     this.employeeApi.logout();
     this.router.navigate(['./login']);
   }
