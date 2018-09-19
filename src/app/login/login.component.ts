@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           if (result.user.email === 'dmastag@yahoo.com') {
             localStorage.setItem('title', 'dmastag');
             localStorage.setItem('isAdmin', 'true');
-            
+            localStorage.setItem('myRole',result.user.roleId );
             this.router.navigate(['/main']);
           } else {
             this.companyApi.findById(result.user.companyId)

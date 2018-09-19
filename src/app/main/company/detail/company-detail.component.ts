@@ -229,7 +229,6 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   exportData() {
-
     this.http
       .get(LoopBackConfig.getPath() + '/api/employees/download?company=' + this.companyId + "&roleid="+this.currentRole,
         { responseType: ResponseContentType.Blob })

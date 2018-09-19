@@ -154,7 +154,7 @@ export class Employee implements EmployeeInterface {
         "roleId": {
           name: 'roleId',
           type: 'number',
-          default: 31
+          default: 1
         },
         "realm": {
           name: 'realm',
