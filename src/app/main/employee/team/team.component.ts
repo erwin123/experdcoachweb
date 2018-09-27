@@ -136,7 +136,7 @@ export class TeamComponent implements OnInit {
         }
       })
       .subscribe((result: EmployeeTeam[]) => {
-        this.employeeteams = result;
+        this.employeeteams = result.filter(f => f.team);  
       });
 
   }
